@@ -50,6 +50,10 @@ def edit_user(original_account_id: str = None, new_user: User = None):
     my_query = "UPDATE User SET "
     my_values = []
 
+    if new_user.account_id is not None:
+        my_query += "account_id = %s, "
+        my_values.append(new_user.account_id)
+
     if new_user.name is not None:
         my_query += "name = %s, "
         my_values.append(new_user.name)
